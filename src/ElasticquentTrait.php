@@ -218,10 +218,11 @@ trait ElasticquentTrait
      * @param int   $limit
      * @param int   $offset
      * @param array $sort
+     * @param array $scripts
      *
      * @return ElasticquentResultCollection
      */
-    public static function searchByQuery($query = null, $aggregations = null, $sourceFields = null, $limit = null, $offset = null, $sort = null, $scripts)
+    public static function searchByQuery($query = null, $aggregations = null, $sourceFields = null, $limit = null, $offset = null, $sort = null, $scripts = null)
     {
         $instance = new static;
 
