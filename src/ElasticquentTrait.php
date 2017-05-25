@@ -221,7 +221,7 @@ trait ElasticquentTrait
      *
      * @return ElasticquentResultCollection
      */
-    public static function searchByQuery($query = null, $aggregations = null, $sourceFields = null, $limit = null, $offset = null, $sort = null)
+    public static function searchByQuery($query = null, $aggregations = null, $sourceFields = null, $limit = null, $offset = null, $sort = null, $scripts)
     {
         $instance = new static;
 
@@ -241,6 +241,10 @@ trait ElasticquentTrait
 
         if (!empty($sort)) {
             $params['body']['sort'] = $sort;
+        }
+        
+        if(!empty($scripts)) {
+            $params['body']['script_fields'] = $scripts;
         }
 
         $result = $instance->getElasticSearchClient()->search($params);
